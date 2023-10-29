@@ -13,52 +13,49 @@ Integrantes del equipo:
 1. Desarrollar un programa que ingrese un número entero n y separe todos los digitos que componen el número. **Pista:** Utilice los operadores módulo (%) y división entera (//).
 
 ```python
-numeros = []  # Se define una lista vacía llamada "numeros"
-def separar_numero(x):  # Se define una función llamada "separar_numero" que toma un número entero "x" como argumento
-    while x > 0:  # Se utiliza un bucle "while" para iterar mientras "x" sea mayor que cero
-        numeros.append(x%10)  # Se utiliza el operador módulo "%" para obtener el último dígito de "x" y se agrega a la lista "numeros" utilizando el método "append()"
-        x = x // 10  # Se utiliza el operador de división entera "//" para eliminar el último dígito de "x"
-    numeros.reverse()  # Se invierte el orden de los elementos en la lista "numeros" utilizando el método "reverse()"
-    print(numeros)  # Se imprime la lista "numeros" que contiene los dígitos individuales del número entero original
-
-n = int(input("Ingrese el numero entero el cual quiera separar: "))  # Se pide al usuario que ingrese un número entero y se almacena en la variable "n"
-separar_numero(n)  # Se llama a la función "separar_numero" con el número ingresado como argumento
+numeros = []  # Definición de la lista numeros
+def separarDigitos(num):  # Definición de la Función para separa los dígitos de un número
+    while num > 0:  
+        numeros.append(num%10)  # Operador módulo % para obtener el último dígito de num
+        num = num // 10           # Operador de división entera "//" para eliminar el último dígito de num
+    numeros.reverse()         # Invierte el orden de los elementos de la lista numeros
+    print("Los dígitos separados del número ingresado son: " + str(numeros))            # Imprimir resultados
+n = int(input("Ingrese un número entero para separar sus dígitos: "))  # Ingreso del usuario
+separarDigitos(n)  # Llamado de la función como argumento pasando n
 ```
 
 2. Desarrollar un programa que ingrese un número flotante n y separe su parte entera de la parte decimal, y luego entregue los dígitos tanto de la parte entera como de la decimal.
 
 ```python
-import math  # Se importa el módulo "math" que contiene funciones matemáticas
+import math  # Importar el módulo math
+n = float(input("Ingrese el número a calcular su parte entera y su parte decimal: "))  # Ingreso del usuario
 
-n = float(input("Ingrese el número del cual quiera saber su parte entera y su parte decimal: "))  # Se pide al usuario que ingrese un número y se almacena en la variable "n" como un número de punto flotante
+parteEntera = math.trunc(n)     # math.trunc() obtiene la parte entera del número n
+parteDecimal = n - parteEntera  # Restar la parte entera del número n
 
-entero = math.trunc(n)  # Se utiliza la función "trunc()" del módulo "math" para obtener la parte entera del número "n" y se almacena en la variable "entero"
-decimal = n - entero  # Se resta la parte entera del número "n" a "n" para obtener la parte decimal y se almacena en la variable "decimal"
-
-print("La parte entera del número " + str(n) + " es " + str(entero) + " y su parte decimal es " + str(decimal))  # Se imprime en la pantalla la parte entera y la parte decimal del número "n"
+print("La parte entera del número " + str(n) + " es " + str(parteEntera) + " y su parte decimal es " + str(parteDecimal))  # Imprimir resultado
 ```
 
 3. Desarrollar un programa que permita ingresar dos números enteros y determinar si se tratan de números espejos, definiendo números espejos como dos números a y b tales que a se lee de izquierda a derecha igual que se lee b de derecha a izquierda, y viceversa.
 
 ```python
-def invertir_numero(numero):  # Se define una función llamada "invertir_numero" que toma un número entero "numero" como argumento
-    numero_invertido = 0  # Se inicializa la variable "numero_invertido" en cero
-    while numero > 0:  # Se utiliza un bucle "while" para iterar mientras "numero" sea mayor que cero
-        digito = numero % 10  # Se utiliza el operador módulo "%" para obtener el último dígito de "numero" y se almacena en la variable "digito"
-        numero_invertido = (numero_invertido * 10) + digito  # Se multiplica "numero_invertido" por 10 y se le suma "digito" para invertir el orden de los dígitos de "numero" y se almacena en la variable "numero_invertido"
-        numero //= 10  # Se utiliza el operador de división entera "//" para eliminar el último dígito de "numero"
-    return numero_invertido  # Se devuelve el número invertido
+def numeroEspejo(numero):  # Definición de la función numeroEspejo
+    numero_invertido = 0   # Inicializa variable en cero
+    while numero > 0:      # Mientras el número sea mayor que cero
+        digito = numero % 10  # Operador módulo % para obtener el último dígito de numero 
+        numero_invertido = (numero_invertido * 10) + digito  # Se multiplica numero_invertido por 10 y se le suma digito para invertir el orden de los dígitos de numero 
+        numero //= 10      # Se utiliza el operador de división entera "//" para eliminar el último dígito de "numero"
+    return numero_invertido  # Retorna el número invertido
 
-n = int(input("Ingrese el primer número: "))  # Se pide al usuario que ingrese el primer número y se almacena en la variable "n" como un número entero
-m = int(input("Ingrese el segundo número: "))  # Se pide al usuario que ingrese el segundo número y se almacena en la variable "m" como un número entero
+a = int(input("Ingrese el primer número:  "))  # Ingreso del usuario de a
+b = int(input("Ingrese el segundo número: "))  # Ingreso del usuario de b
 
-n_invertido = invertir_numero(n)  # Se llama a la función "invertir_numero" con el número "n" como argumento y se almacena el resultado en la variable "n_invertido"
+a_invertido = numeroEspejo(a)  # Llamado de la función
 
-if n_invertido == m:  # Se utiliza una condición "if" para verificar si el número invertido "n_invertido" es igual al número "m"
-    print("Los números", n, "y", m, "son espejos.")  # Si los números son espejos, se imprime en la pantalla un mensaje indicando que los números son espejos
+if a_invertido == b:           # Si el número invertido n_invertido es igual al número b
+    print("Los números", a, "y", b, "sí son espejos.")  # Imprimir resultado afirmativo
 else:
-    print("Los números", n, "y", m, "no son espejos.")  # Si los números no son espejos, se imprime en la pantalla un mensaje indicando que los números no son espejos
-
+    print("Los números", a, "y", b, "no son espejos.")  # Imprimir resultado negativo
 ```
 
 4. Diseñar una función que permita calcular una aproximación de la función coseno alrededor de 0 para cualquier valor x (real), utilizando los primeros n términos de la serie de Taylor. **nota:** use *math* para traer la función coseno y mostrar la diferencia entre el valor real y la aproximación. Calcule con cuántos términos de la serie (i.e: cuáles valores de n), se tienen errores del 10%, 1%, 0.1% y 0.001%.
@@ -373,29 +370,4 @@ else:
 
 ### Condiciones de entrega:
 
-<table cellspacing="1" bgcolor="">
-	<tr bgcolor="#252582">
-		<th><b>Item</b></th>
-    <th><b>Condición</b></th>
-	</tr>
-	<tr style="text-align: left; vertical-align: middle;" bgcolor="#e4e4ed">
-		<td style="color:#141414">Entregables</td>
-    <td style="color:#141414">Se debe elaborar un repo donde presente la solución a todos los problemas planteados. Para los puntos impares debe realizar un programa individual con extensión <i>.py</i> y para los pares debe elaborar un notebook <i>.ipynb</i> con las soluciones. El repo debe contener la explicación de la solución de cada punto. Todos los archivos se deben adjuntar al repo.<br>
-    El repo debe ir con los integrantes del equipo, el nombre del grupo y un logo genial.
-    </td>
-	</tr>
-  <tr style="text-align: left; vertical-align: middle;" bgcolor="#e4e4ed">
-    <td style="color:#141414">Fecha</td>
-    <td style="color:#141414">28/10/2023 Max: 22:00<br>Se creará el canal taller 2 con un archivo de Google Sheets donde se debe colocar la dirección del repo, si éste tiene un commit posterior al corte, se toma como referencia el más cercano a la fecha establecida.</td>
-	</tr>
-  <tr style="text-align: left; vertical-align: middle;" bgcolor="#e4e4ed">
-    <td style="color:#141414">Forma de trabajo</td>
-    <td style="color:#141414">Grupal</td>
-	</tr>
-  <tr style="text-align: left; vertical-align: middle;" bgcolor="#e4e4ed">
-    <td style="color:#141414">Condiciones Extra</td>
-    <td style="color:#141414">
-    Los códigos elaborados deben estar apropiadamente comentados.<br>
-    Todos los programas deben incorporar el uso de funciones.</td>
-	</tr>
-</table>
+
