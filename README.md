@@ -62,95 +62,87 @@ else:
 $$cos(x) \approx cos(x,n) \approx \sum_{i=0}^{n} (-1)^i \frac{x^{2i}}{(2i)!}$$
 
 ```python
-import math  # Se importa el módulo "math" que contiene funciones matemáticas
+import math  # Importan el módulo math
 
-def aproximacion_coseno(x, n):  # Se define una función llamada "aproximacion_coseno" que toma dos argumentos: "x" y "n"
-    aproximacion = 0  # Se inicializa la variable "aproximacion" en cero
-    for i in range(n):  # Se utiliza un bucle "for" para iterar "n" veces
-        termino = ((-1) ** i) * (x ** (2 * i)) / math.factorial(2 * i)  # Se calcula el "i"-ésimo término de la serie de Taylor para el coseno y se almacena en la variable "termino"
-        aproximacion += termino  # Se suma el "i"-ésimo término a la variable "aproximacion"
-    return aproximacion  # Se devuelve la aproximación del coseno de "x" utilizando "n" términos de la serie de Taylor
+def aproxCoseno(x, n):  # Función aproximación del coseno
+    aproximacion = 0  # Inicializar variable en cero
+    for i in range(n):  # Utilizar un bucle for hasta n términos
+        termino = ((-1) ** i) * (x ** (2 * i)) / math.factorial(2 * i)  # Calcular i-ésimo término de la serie de Taylor para el coseno
+        aproximacion += termino  # Sumar el i-ésimo término a la variable 
+    return aproximacion  # Retornar la aproximacion de los n terminos
 
-x = float(input("Ingrese el valor de x: "))  # Se pide al usuario que ingrese el valor de "x" y se almacena en la variable "x" como un número de punto flotante
+x = float(input("Ingrese el valor de x, para aproximar coseno de x: "))  # Ingreso del usuario
 
-errores_deseados = [0.001, 0.1, 1, 10]  # Se define una lista de errores deseados
+errores_deseados = [0.001, 0.1, 1, 10]  # Lista de errores esperados
 
-for error in errores_deseados:  # Se utiliza un bucle "for" para iterar sobre los errores deseados
-    e = 0  # Se inicializa la variable "e" en cero
-    while True:  # Se utiliza un bucle "while" infinito
-        e += 1  # Se incrementa la variable "e" en uno en cada iteración
-        aproximacion = aproximacion_coseno(x, e)  # Se llama a la función "aproximacion_coseno" con "x" y "e" como argumentos y se almacena el resultado en la variable "aproximacion"
-        error_porcentual = abs((aproximacion - math.cos(x)) / math.cos(x)) * 100  # Se calcula el error porcentual entre la aproximación y el valor real del coseno de "x" y se almacena en la variable "error_porcentual"
-        if error_porcentual <= error:  # Se utiliza una condición "if" para verificar si el error porcentual es menor o igual al error deseado
-            break  # Si el error porcentual es menor o igual al error deseado, se sale del bucle "while"
-    print("Aproximación: " + str(aproximacion))  # Se imprime en la pantalla la aproximación del coseno de "x" utilizando "e" términos de la serie de Taylor
-    print("Valor real: " + str(math.cos(x)))  # Se imprime en la pantalla el valor real del coseno de "x"
-    print("Con un error del " + str(error) + "% se necesitan " + str(e) + " términos de la serie")  # Se imprime en la pantalla el error deseado, el número de términos de la serie necesarios para alcanzar el error deseado y un mensaje indicando que se ha alcanzado el error deseado
-    print("")  # Se imprime una línea en blanco para separar las salidas de cada iteración del bucle "for"
+for error in errores_deseados:  # Bucle for para iterar segun el error esperado
+    e = 0  # Inicializar e en cero
+    while True:  # Bucle infinito
+        e += 1  # Aumentar e en 1
+        aproximacion = aproxCoseno(x, e)  # Llamado de la funcion de aproximacion de coseno
+        error_porcentual = abs((aproximacion - math.cos(x)) / math.cos(x)) * 100  # Cálculo del error porcentual
+        if error_porcentual <= error:  # Si el error porcentual es menor al error deseado
+            break  # Salir del bucle infinito
+    print("Aproximación de coseno de x: " + str(aproximacion))  # Imprimir la aproximación por series de Taylor
+    print("Valor real de coseno de x:   " + str(math.cos(x)))  # Imprimir el valor real de coseno de x
+    print("Con un error de " + str(error) + "% se necesitan " + str(e) + " términos de la serie\n")  # Imprimir los términos necesarios
 ```
 
-5. Desarrollar un programa que permita determinar el Minimo Comun Multiplo de dos numeros enteros. Abordar el problema desde una perpectiva tanto iterativa como recursiva. **Pista:** Puede ser de utilidad chequear el [Algoritmo de Euclides](https://es.wikipedia.org/wiki/Algoritmo_de_Euclides) para el cálculo del Máximo Común Divisor, y revisar cómo se relaciona este último con el Mínimo Común Múltiplo.
+5. Desarrollar un programa que permita determinar el Mínimo Común Múltiplo de dos numeros enteros. Abordar el problema desde una perpectiva tanto iterativa como recursiva. **Pista:** Puede ser de utilidad chequear el [Algoritmo de Euclides](https://es.wikipedia.org/wiki/Algoritmo_de_Euclides) para el cálculo del Máximo Común Divisor, y revisar cómo se relaciona este último con el Mínimo Común Múltiplo.
 
 ```python
-# Función para calcular el Máximo Común Divisor de dos números
-def mcd(a, b):
+def mcd(a, b): # Función para calcular el Máximo Común Divisor de dos números
     while b:
         a, b = b, a % b
     return a
 
-# Función para calcular el Mínimo Común Múltiplo de dos números
-def mcm(a, b):
+def mcm(a, b): # Función para calcular el Mínimo Común Múltiplo de dos números
     return a * b // mcd(a, b)
 
-# Versión iterativa
-def mcm_iterativo(a, b):
+def mcmIterativo(a, b): # Función iterativa para calcular el Mínimo Común Múltiplo de dos números
     return mcm(a, b)
 
-# Versión recursiva
-def mcm_recursivo(a, b):
+def mcmRecursivo(a, b): # Función recursiva para calcular el Mínimo Común Múltiplo de dos números
     if b == 0:
         return a
     else:
-        return mcm_recursivo(b, a % b) * a // mcd(a, b)
+        return mcmRecursivo(b, a % b) * a // mcd(a, b)
 
-# Imprimimos los resultados
 if __name__ == "__main__":
-    a = int(input("Ingrese el primer número: "))
+    a = int(input("Ingrese el primer número:  "))    # Ingreso del usuario 
     b = int(input("Ingrese el segundo número: "))
-    print("El Mínimo Común Múltiplo de", a, "y", b, "es:", mcm_iterativo(a, b))
-    print("El Mínimo Común Múltiplo de", a, "y", b, "es:", mcm_recursivo(a, b))
-    
+    print("El Mínimo Común Múltiplo de", a, "y", b, "con perspectiva iterativa es:", mcmIterativo(a, b))  # Imprimir resultados
+    print("El Mínimo Común Múltiplo de", a, "y", b, "con perspectiva recursiva es:", mcmRecursivo(a, b)) 
 ```
 
 6. Desarrollar un programa que determine si en una lista existen o no elementos repetidos. **Pista:** Maneje valores booleanos y utilice el operador *in*.
 
 ```python
-# Definimos una lista vacía para almacenar los elementos
-lista = []
+lista = []   # Definimos una lista vacía
 
-# Pedimos al usuario que ingrese los elementos de lista
-while True:
-    elemento = input("Ingrese un elemento (o presione Enter para terminar): ")
+k = 1
+while True:       # Ingreso del usuario de los términos de la lista
+    elemento = input("Ingrese el elemento No. " +  str(k)  + " de la lista (o presione Enter para terminar): ")
     if elemento == '':
         break
-    lista.append(int(elemento))
+    k += 1
+    lista.append(str(elemento))
 
-# Buscamos elementos repetidos en la lista
 repetidos = False
-for i in range(len(lista)):
+for i in range(len(lista)):    # Buscar elementos repetidos en la lista
     for j in range(i+1, len(lista)):
         if lista[i] == lista[j]:
             repetidos = True
             break
     if repetidos:
         break
-# Imprimimos la lista
-print(lista)
-# Imprimimos el resultado
-if repetidos:
-    print('Existen elementos repetidos en la lista')
+
+print("La lista ingresada es: " + str(lista))  # Imprimir la lista
+
+if repetidos:     # Imprimir resultado
+    print('Sí existen elementos repetidos en la lista.')
 else:
-    print('No existen elementos repetidos en la lista')
+    print('No existen elementos repetidos en la lista.')
 ```
 
 7. Desarrollar un programa que determine si en una lista se encuentra
