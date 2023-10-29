@@ -1,7 +1,8 @@
 ## Taller 2: desarrollado por "Los Pythoneros"
 
 
-![ideogram (1)](https://github.com/jeriosv/taller_1/assets/142249529/5bd59e64-9074-4caf-beac-929549df998f)
+![image](https://github.com/jeriosv/taller_2/assets/142249529/977e4194-b6d2-4210-8a26-f94af0efd5da)
+
 
 
 Integrantes del equipo:
