@@ -276,6 +276,24 @@ print(f"La raíz cúbica del menor número es:   {raizCubica}")
 10. Suponga que se tiene una lista A con ciertos números enteros. Desarrolle una función que, independientemente de los números que se encuentran en la lista A, tome aquellos números que son múltiplos de 3 y los guarde en una lista nueva, la cual debe ser **retornada** por la función. Implemente la perspectiva de un *patrón de acumulación* y también de *comprensión de listas*. **Desafío:** Si ya lo logró, inténtelo ahora sin utilizar el módulo (%). **Pista:** Un número es multiplo de 3 si la suma de sus dígitos también lo es, ¿verdad?
 
 ```python
+def multiplosDe3(lista):   # Función para el cálculo de si es multiplo de 3
+    return [i for i in lista if i % 3 == 0]                                                     
+                                
+if __name__ == "__main__":
+  lista=[]
+  n = int(input("Ingrese la cantidad de elementos de la lista: "))  # Ingreso del usuario de cantidad de elementos de la lista
+  for i in range(n):                                                # Ingreso de elementos por el usuario
+    numero = int(input("Ingrese un número a la lista: "))
+    lista.append(numero)                                            # Agrega elementos a la lista
+  multiplos=multiplosDe3(lista)                                     # Llamado de la función
+  print("La lista ingresada es: " + str(lista))                     # Imprimir lista ingresada
+  print("Los números múltiplos de 3 son: " + str(multiplos))        # Imprimir resultados
+```
+
+### Bono
+11. Desarrollar un algoritmo que determine si una matriz es mágica. Se dice que una matriz cuadrada es mágica si la suma de cada una de sus filas, de cada una de sus columnas y de cada diagonal es igual.
+
+```python
 def matrizMagica(matriz:list) -> bool:
     m_len = len(matriz)
     suma_filas = []     # Sumar filas
@@ -335,13 +353,6 @@ if __name__ == "__main__":
         print("La matriz sí es mágica.")
     else:
         print("La matriz no es mágica.")
-```
-
-### Bono
-11. Desarrollar un algoritmo que determine si una matriz es mágica. Se dice que una matriz cuadrada es mágica si la suma de cada una de sus filas, de cada una de sus columnas y de cada diagonal es igual.
-
-```python
-
 ```
 
 
