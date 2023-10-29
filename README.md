@@ -368,6 +368,5 @@ else:
 
 ```
 
-### Condiciones de entrega:
 
 
