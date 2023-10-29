@@ -14,21 +14,21 @@ Integrantes del equipo:
 1. Desarrollar un programa que ingrese un número entero n y separe todos los digitos que componen el número. **Pista:** Utilice los operadores módulo (%) y división entera (//).
 
 ```python
-numeros = []  # Definición de la lista numeros
-def separarDigitos(num):  # Definición de la Función para separa los dígitos de un número
+numeros = []                    # Definición de la lista numeros
+def separarDigitos(num):        # Definición de la Función para separa los dígitos de un número
     while num > 0:  
         numeros.append(num%10)  # Operador módulo % para obtener el último dígito de num
-        num = num // 10           # Operador de división entera "//" para eliminar el último dígito de num
-    numeros.reverse()         # Invierte el orden de los elementos de la lista numeros
-    print("Los dígitos separados del número ingresado son: " + str(numeros))            # Imprimir resultados
-n = int(input("Ingrese un número entero para separar sus dígitos: "))  # Ingreso del usuario
-separarDigitos(n)  # Llamado de la función como argumento pasando n
+        num = num // 10         # Operador de división entera "//" para eliminar el último dígito de num
+    numeros.reverse()           # Invierte el orden de los elementos de la lista numeros
+    print("Los dígitos separados del número ingresado son: " + str(numeros)) # Imprimir resultados
+n = int(input("Ingrese un número entero para separar sus dígitos: "))        # Ingreso del usuario
+separarDigitos(n)               # Llamado de la función como argumento pasando n
 ```
 
 2. Desarrollar un programa que ingrese un número flotante n y separe su parte entera de la parte decimal, y luego entregue los dígitos tanto de la parte entera como de la decimal.
 
 ```python
-import math  # Importar el módulo math
+import math                     # Importar el módulo math
 n = float(input("Ingrese el número a calcular su parte entera y su parte decimal: "))  # Ingreso del usuario
 
 parteEntera = math.trunc(n)     # math.trunc() obtiene la parte entera del número n
@@ -45,8 +45,8 @@ def numeroEspejo(numero):  # Definición de la función numeroEspejo
     while numero > 0:      # Mientras el número sea mayor que cero
         digito = numero % 10  # Operador módulo % para obtener el último dígito de numero 
         numero_invertido = (numero_invertido * 10) + digito  # Se multiplica numero_invertido por 10 y se le suma digito para invertir el orden de los dígitos de numero 
-        numero //= 10      # Se utiliza el operador de división entera "//" para eliminar el último dígito de "numero"
-    return numero_invertido  # Retorna el número invertido
+        numero //= 10         # Se utiliza el operador de división entera "//" para eliminar el último dígito de "numero"
+    return numero_invertido   # Retorna el número invertido
 
 a = int(input("Ingrese el primer número:  "))  # Ingreso del usuario de a
 b = int(input("Ingrese el segundo número: "))  # Ingreso del usuario de b
@@ -63,29 +63,29 @@ else:
 $$cos(x) \approx cos(x,n) \approx \sum_{i=0}^{n} (-1)^i \frac{x^{2i}}{(2i)!}$$
 
 ```python
-import math  # Importan el módulo math
+import math             # Importan el módulo math
 
 def aproxCoseno(x, n):  # Función aproximación del coseno
-    aproximacion = 0  # Inicializar variable en cero
+    aproximacion = 0    # Inicializar variable en cero
     for i in range(n):  # Utilizar un bucle for hasta n términos
         termino = ((-1) ** i) * (x ** (2 * i)) / math.factorial(2 * i)  # Calcular i-ésimo término de la serie de Taylor para el coseno
         aproximacion += termino  # Sumar el i-ésimo término a la variable 
-    return aproximacion  # Retornar la aproximacion de los n terminos
+    return aproximacion          # Retornar la aproximacion de los n terminos
 
 x = float(input("Ingrese el valor de x, para aproximar coseno de x: "))  # Ingreso del usuario
 
 errores_deseados = [0.001, 0.1, 1, 10]  # Lista de errores esperados
 
 for error in errores_deseados:  # Bucle for para iterar segun el error esperado
-    e = 0  # Inicializar e en cero
-    while True:  # Bucle infinito
-        e += 1  # Aumentar e en 1
+    e = 0                       # Inicializar e en cero
+    while True:                 # Bucle infinito
+        e += 1                  # Aumentar e en 1
         aproximacion = aproxCoseno(x, e)  # Llamado de la funcion de aproximacion de coseno
         error_porcentual = abs((aproximacion - math.cos(x)) / math.cos(x)) * 100  # Cálculo del error porcentual
         if error_porcentual <= error:  # Si el error porcentual es menor al error deseado
-            break  # Salir del bucle infinito
+            break               # Salir del bucle infinito
     print("Aproximación de coseno de x: " + str(aproximacion))  # Imprimir la aproximación por series de Taylor
-    print("Valor real de coseno de x:   " + str(math.cos(x)))  # Imprimir el valor real de coseno de x
+    print("Valor real de coseno de x:   " + str(math.cos(x)))   # Imprimir el valor real de coseno de x
     print("Con un error de " + str(error) + "% se necesitan " + str(e) + " términos de la serie\n")  # Imprimir los términos necesarios
 ```
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     a = int(input("Ingrese el primer número:  "))    # Ingreso del usuario 
     b = int(input("Ingrese el segundo número: "))
     print("El Mínimo Común Múltiplo de", a, "y", b, "con perspectiva iterativa es:", mcmIterativo(a, b))  # Imprimir resultados
-    print("El Mínimo Común Múltiplo de", a, "y", b, "con perspectiva recursiva es:", mcmRecursivo(a, b)) 
+    print("El Mínimo Común Múltiplo de", a, "y", b, "con perspectiva recursiva es:", mcmRecursivo(a, b))
 ```
 
 6. Desarrollar un programa que determine si en una lista existen o no elementos repetidos. **Pista:** Maneje valores booleanos y utilice el operador *in*.
@@ -146,54 +146,41 @@ else:
     print('No existen elementos repetidos en la lista.')
 ```
 
-7. Desarrollar un programa que determine si en una lista se encuentra
-una cadena de caracteres con dos o más vocales. Si la cadena existe debe imprimirla y si no existe debe imprimir 'No existe'.
+7. Desarrollar un programa que determine si en una lista se encuentra una cadena de caracteres con dos o más vocales. Si la cadena existe debe imprimirla y si no existe debe imprimir 'No existe'.
 
 ```python
-# Definimos una lista vacía para almacenar las cadenas de caracteres
-lista=[]
+lista=[]                  # Definimos una lista vacía 
 
-# Pedimos al usuario que ingrese las cadenas de caracteres hasta que ingrese 'fin'
-while True:
-    cadena = input("Ingrese una cadena de caracteres (o escriba 'fin' para terminar): ")
-    # Si el usuario ingresa 'fin', salimos del bucle
-    if cadena == 'fin':
+k = 1
+while True:               # Ingreso del usuario de las cadenas de caracteres
+    cadena = input("Ingrese la cadena de caracteres No. " +  str(k)  + " de la lista (o presione Enter para terminar): ")
+    if cadena == '':      # Si el usuario ingresa Enter, salimos del bucle
         break
-    # Agregamos la cadena a la lista
-    lista.append(cadena)
+    k += 1
+    lista.append(cadena)   # Agregar la cadena a la lista
 
-# Definimos una función para contar las vocales en una cadena
-def contar_vocales(cadena):
-    # Definimos una lista con las vocales (mayúsculas y minúsculas)
-    vocales = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
-    # Inicializamos el contador de vocales en 0
-    contador = 0
-    # Recorremos la cadena de caracteres
-    for letra in cadena:
-        # Si la letra es una vocal, aumentamos el contador
+def cuentaVocales(cadena): # Función para contar las vocales
+    vocales = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'] # Lista de vocales
+    contador = 0           # Inicializar contador
+    for letra in cadena:   # Recorrer la cadena en busqueda de vocales
         if letra in vocales:
             contador += 1
-    # Devolvemos el contador de vocales
-    return contador
+    return contador        # Retorna el número de vocales en una cadena de caracteres
 
-# Definimos una variable para indicar si encontramos una cadena con dos o más vocales
 encontrado = False
+print("Las cadenas que tienen 2 o más vocales son:")
 
-# Recorremos la lista de cadenas de caracteres
-for cadena in lista:
-    # Contamos las vocales en la cadena
-    num_vocales = contar_vocales(cadena)
-    # Si la cadena tiene dos o más vocales, la imprimimos y cambiamos el valor de la variable encontrado
-    if num_vocales >= 2:
-        print(f"La cadena '{cadena}' tiene {num_vocales} vocales.")
+for cadena in lista:       # Recorrer la lista de cadenas de caracteres
+    cantidadVocales = cuentaVocales(cadena)   
+    if cantidadVocales >= 2: # Si la cadena tiene dos o más vocales, imprimir y cambiar encontrado a true
+        print(f"La cadena '{cadena}' tiene {cantidadVocales} vocales.")
         encontrado = True
 
-# Si no encontramos ninguna cadena con dos o más vocales, imprimimos 'No existe'
-if not encontrado:
-    print('No existe')
+if not encontrado:         # Imprimir resultado negativo
+    print("No existe.")
 ```
 
-8. Desarrollar un programa que dadas dos listas determine que elementos tiene la primer lista que no tenga la segunda lista. **Ejemplo:**
+8. Desarrollar un programa que dadas dos listas determine que elementos tiene la primera lista que no tenga la segunda lista. **Ejemplo:**
 <center>
 <table border="1">
 <tr>
@@ -211,147 +198,143 @@ salida: [1, True]
 </center>
 
 ```python
-# Pedimos al usuario que ingrese los elementos de la primera lista
 lista1 = []
-while True:
-    elemento = input("Ingrese un elemento para la primera lista (o presione Enter para terminar): ")
+k = 1
+while True:    # Ingreso del usuario de los terminos de la primera lista
+    elemento = input("Ingrese el elemento No. " +  str(k)  + " para la primera lista (o presione Enter para terminar): ")
     if elemento == '':
         break
-    lista1.append(int(elemento))
+    k += 1
+    lista1.append(str(elemento))
 
-# Pedimos al usuario que ingrese los elementos de la segunda lista
 lista2 = []
-while True:
-    elemento = input("Ingrese un elemento para la segunda lista (o presione Enter para terminar): ")
+k = 1
+while True:    # Ingreso del usuario de los terminos de la segunda lista
+    elemento = input("Ingrese el elemento No. " +  str(k)  + " para la segunda lista (o presione Enter para terminar): ")
     if elemento == '':
         break
-    lista2.append(int(elemento))
+    k += 1
+    lista2.append(str(elemento))
 
-# Creamos una lista vacía para almacenar los elementos que están en la primera lista pero no en la segunda lista
-diferencia = []
+diferentes = []   # Lista vacía para almacenar los elementos que están en la primera lista pero no en la segunda lista
 
-# Recorremos la primera lista y verificamos si cada elemento está en la segunda lista
-for elemento in lista1:
+for elemento in lista1:    # Recorrer la primera lista y verificamos si cada elemento está en la segunda lista
     esta_en_lista2 = False
     for elemento2 in lista2:
         if elemento == elemento2:
             esta_en_lista2 = True
             break
     if not esta_en_lista2:
-        diferencia.append(elemento)
+        diferentes.append(elemento)
 
-# Imprimimos los elementos que están en la primera lista pero no en la segunda lista
-print("Los elementos que están en la primera lista pero no en la segunda lista son:", diferencia)
+print("La primer lista ingresada es:  " + str(lista1))  # Imprimir la lista 1
+print("La segunda lista ingresada es: " + str(lista2))  # Imprimir la lista 2
+print("Los elementos que están en la primera lista pero no en la segunda lista son:", diferentes) # Imprimir resultados
 ```
 
 
 9. Resolver el punto 7 del [taller 1](https://github.com/fegonzalez7/pdc_unal_clase8) usando operaciones con vectores.
 
 ```python
-# Pedir 5 números reales al usuario
 numeros = []
-for i in range(5):
+for i in range(5):     # Ingreso del usuario de 5 numeros reales
     num = float(input(f"Ingrese el número {i+1}: "))
     numeros.append(num)
 
-# Calcular el promedio aritmético
-promedio_aritmetico = sum(numeros) / len(numeros)
+promedioAritmetico = sum(numeros) / len(numeros)   # Calcular el promedio aritmético
 
-# Calcular la mediana
-numeros_ordenados = sorted(numeros)
+numerosOrdenados = sorted(numeros)  # Calcular la mediana
 mediana = 0
-if len(numeros_ordenados) % 2 == 0:
-    # Si el número de elementos es par, se promedian los dos del centro
-    indice_medio = len(numeros_ordenados) // 2
-    mediana = (numeros_ordenados[indice_medio-1] + numeros_ordenados[indice_medio]) / 2
-else:
-    # Si el número de elementos es impar, se toma el del centro
-    indice_medio = len(numeros_ordenados) // 2
-    mediana = numeros_ordenados[indice_medio]
+if len(numerosOrdenados) % 2 == 0:  # Si el número de elementos es par, se promedian los dos del centro
+    indiceMedio = len(numerosOrdenados) // 2
+    mediana = (numerosOrdenados[indiceMedio-1] + numerosOrdenados[indiceMedio]) / 2
+else:                                # Sino, el número de elementos es impar, se toma el del centro
+    indiceMedio = len(numerosOrdenados) // 2
+    mediana = numerosOrdenados[indiceMedio]
 
-# Calcular el promedio multiplicativo
-from functools import reduce
-promedio_multiplicativo = reduce(lambda x, y: x * y, numeros) ** (1/len(numeros))
+from functools import reduce         # Calcular el promedio multiplicativo
+promedioMultiplicativo = reduce(lambda x, y: x * y, numeros) ** (1/len(numeros))
 
-# Ordenar los números de forma ascendente y descendente
-numeros_ascendente = sorted(numeros)
-numeros_descendente = sorted(numeros, reverse=True)
+numerosAscendente = sorted(numeros) # Ordenar los números de forma ascendente y descendente
+numerosDescendente = sorted(numeros, reverse=True)
 
-# Calcular la potencia del mayor número elevado al menor número
-mayor = max(numeros)
+mayor = max(numeros)                 # Calcular la potencia del mayor número elevado al menor número
 menor = min(numeros)
 potencia = mayor ** menor
 
-# Calcular la raíz cúbica del menor número
-raiz_cubica = menor ** (1/3)
+raizCubica = menor ** (1/3)         # Calcular la raíz cúbica del menor número
 
-# Mostrar los resultados
-print(f"El promedio aritmético es: {promedio_aritmetico}")
-print(f"La mediana es: {mediana}")
-print(f"El promedio multiplicativo es: {promedio_multiplicativo}")
-print(f"Los números en orden ascendente son: {numeros_ascendente}")
-print(f"Los números en orden descendente son: {numeros_descendente}")
+print(f"El promedio aritmético es: {promedioAritmetico}")    # Imprimir resultados
+print(f"La mediana es:             {mediana}")
+print(f"El promedio multiplicativo es:        {promedioMultiplicativo}")
+print(f"Los números en orden ascendente son:  {numerosAscendente}")
+print(f"Los números en orden descendente son: {numerosDescendente}")
 print(f"El mayor número elevado al menor número es: {potencia}")
-print(f"La raíz cúbica del menor número es: {raiz_cubica}")
+print(f"La raíz cúbica del menor número es:   {raizCubica}")
 ```
 
 10. Suponga que se tiene una lista A con ciertos números enteros. Desarrolle una función que, independientemente de los números que se encuentran en la lista A, tome aquellos números que son múltiplos de 3 y los guarde en una lista nueva, la cual debe ser **retornada** por la función. Implemente la perspectiva de un *patrón de acumulación* y también de *comprensión de listas*. **Desafío:** Si ya lo logró, inténtelo ahora sin utilizar el módulo (%). **Pista:** Un número es multiplo de 3 si la suma de sus dígitos también lo es, ¿verdad?
 
 ```python
-# Pedimos al usuario que ingrese los datos de la matriz
-n = int(input("Ingrese el tamaño de la matriz: "))
-matriz = []
-for i in range(n):
-    fila = []
-    for j in range(n):
-        elemento = int(input(f"Ingrese el elemento ({i+1},{j+1}): "))
-        fila.append(elemento)
-    matriz.append(fila)
+def matrizMagica(matriz:list) -> bool:
+    m_len = len(matriz)
+    suma_filas = []     # Sumar filas
+    for i in range(m_len): 
+        lst = matriz[i]
+        suma = 0 
+        for j in range(m_len):
+            suma += lst[j]
+        if len(suma_filas) == 0: 
+            suma_filas.append(suma)
+        elif suma_filas[-1] == suma:
+            suma_filas.append(suma)
+        else:
+            return False
+        
+    suma_columnas = [] # Sumar columnas
+    for i in range(m_len):
+        suma = 0 
+        for j in range(m_len):
+            suma += matriz[i][j]
+        if len(suma_columnas) == 0: 
+            suma_columnas.append(suma)
+        elif suma_columnas[-1] == suma:
+            suma_columnas.append(suma)
+        else:
+            return False    
 
-# Calculamos la mágica
-suma_magica = 0
-for i in range(n):
-    suma_magica matriz[0][i]
+    if suma_filas != suma_columnas: # Comparar si las listas (que contienen los valores calculados para la suma de cada fila y columna), son iguales.
+        return False                # Si no son iguales la función retorna False.
+    
+    suma_diagonal1 = 0      # Calcular la suma de la diagonal
+    shifter = 0
+    for i in range(m_len):
+        suma_diagonal1 += matriz[i][shifter]
+        shifter += 1  
 
-# Verificamos si la suma de cada fila, columna y diagonal es igual a la suma mágica
-es_magica = True
-for i in range(n):
-    # Verificamos la suma de la fila i
-    suma_fila = 0
-    for j in range(n):
-        suma_fila += matriz[i][j]
-    if suma_fila != suma_magica:
-        es_magica = False
-        break
-    # Verificamos la suma de la columna i
-    suma_columna = 0
-    for j in range(n):
-        suma_columna += matriz[j][i]
-    if suma_columna != suma_magica:
-        es_magica = False
-        break
-    # Verificamos la suma de la diagonal principal
-    suma_diagonal_principal = 0
-    for j in range(n):
-        if i == j:
-            suma_diagonal_principal += matriz[i][j]
-    if suma_diagonal_principal != suma_magica:
-        es_magica = False
-        break
-    # Verificamos la suma de la diagonal secundaria
-    suma_diagonal_secundaria = 0
-    for j in range(n):
-        if i + j == n - 1:
-            suma_diagonal_secundaria += matriz[i][j]
-    if suma_diagonal_secundaria != suma_magica:
-        es_magica = False
-        break
+    suma_diagonal2 = sum([row[len(matriz) - 1 - i] for i, row in enumerate(matriz)]) # se halla la suma de la diagonal izq-der (se implementaron técnicas novedosas ya que era practicamente lo mismo que para la otra diagonal).
 
-# Imprimimos el resultado
-if es_magica:
-    print("La matriz es mágica")
-else:
-    print("La matriz no es mágica")
+    for i in range(m_len): # Comparar si las listas de las diagonales son iguales a la suma_columnas
+        if suma_columnas[i] != suma_diagonal1 and suma_columnas != suma_diagonal2:
+            return  False
+
+    return True
+    
+if __name__ == "__main__":
+    matriz = []
+    n = int(input("Ingrese el tamaño de la matriz (matriz cuadrada): ")) # Ingreso del tamaño de la matriz cuadrada
+    for x in range(n):
+        lista = []
+        for y in range(n):
+            elemento = int(input(f"Ingrese el elemento ({x+1},{y+1}): "))
+            lista.append(elemento)
+        matriz.append(lista)
+    respuesta = matrizMagica(matriz)
+
+    if respuesta == True :    # Imprimir resultado
+        print("La matriz sí es mágica.")
+    else:
+        print("La matriz no es mágica.")
 ```
 
 ### Bono
